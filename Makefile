@@ -6,13 +6,17 @@ dep:
 gen:
 	@goa gen github.com/yngveh/goatest/design
 
+.PHONY: fmt
+fmt:
+	go fmt .
+
 .PHONY: build
-build:
+build:  fmt
 	cd cmd/calcsvc && \
 	go build
 
 .PHONY: build-cli
-build-cli:
+build-cli: fmt
 	cd cmd/calccli && \
 	go build
 
@@ -22,8 +26,6 @@ build-all: build build-cli
 .PHONY: run
 run: build
 	./cmd/calcsvc/calcsvc
-
-
 
 .PHONY: clean
 clean:
