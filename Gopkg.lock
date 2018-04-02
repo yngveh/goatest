@@ -8,14 +8,10 @@
   revision = "ee938bf735983d53694d79138ad9820efff94c92"
 
 [[projects]]
-  name = "github.com/goadesign/goa"
-  packages = [
-    "design",
-    "design/apidsl",
-    "dslengine"
-  ]
-  revision = "fc29b77a218fb9e190849c81911ed12d25e771de"
-  version = "v1.3.1"
+  name = "github.com/dimfeld/httptreemux"
+  packages = ["."]
+  revision = "7f532489e7739b3d49df5c602bf63549881fe753"
+  version = "v5.0.1"
 
 [[projects]]
   branch = "master"
@@ -24,10 +20,10 @@
   revision = "9fbc68a78c4dbc7914e1a23f88f126bea4383b97"
 
 [[projects]]
-  name = "github.com/satori/go.uuid"
-  packages = ["."]
-  revision = "879c5887cd475cd7864858769793b2ceb0d44feb"
-  version = "v1.1.0"
+  name = "github.com/sergi/go-diff"
+  packages = ["diffmatchpatch"]
+  revision = "1744e2970ca51c86172c8190fadad617561ed6e7"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
@@ -35,9 +31,45 @@
   packages = ["."]
   revision = "795b5e3961ea1912fde60af417ad85e86acc0d6a"
 
+[[projects]]
+  branch = "master"
+  name = "goa.design/goa"
+  packages = [
+    ".",
+    "codegen",
+    "codegen/generator",
+    "codegen/service",
+    "design",
+    "dsl",
+    "eval",
+    "http",
+    "http/codegen",
+    "http/codegen/openapi",
+    "http/design",
+    "http/dsl",
+    "http/middleware",
+    "pkg"
+  ]
+  revision = "0d7800dbfc89e66178a6a76533cce59d78c5293e"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/tools"
+  packages = [
+    "go/ast/astutil",
+    "imports"
+  ]
+  revision = "ac136b6c2db7c4d43955e4bc7174db36dc0539c0"
+
+[[projects]]
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
+  version = "v2.2.1"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "4edddb6ed4bbca804a750670aa6c876efa445f977c6bfcb36c150bad01dcdfd2"
+  inputs-digest = "f16e565fc2360ebd0923beeb75ec3901c42e05a4aa3422d943aa76c0b8994f81"
   solver-name = "gps-cdcl"
   solver-version = 1

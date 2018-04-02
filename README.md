@@ -5,5 +5,10 @@
 - Go
 - dep
 - make
-- goa ( go get -u github.com/goadesign/goa/... )
+- goa ( go get -u god.design/goa/... )
 
+## Step 1
+    go get -u god.design/goa/...
+
+## Step 2
+    make gen

@@ -1,21 +1,31 @@
 
-
 .PHONY: dep
 dep:
 	dep ensure -v
 
-.PHONY: generate
-generate:
-	@goagen app     -d github.com/yngveh/goatest/design
-	@goagen swagger -d github.com/yngveh/goatest/design
-	@goagen schema  -d github.com/yngveh/goatest/design
-	@goagen main    -d github.com/yngveh/goatest/design
+gen:
+	@goa gen github.com/yngveh/goatest/design
 
 .PHONY: build
 build:
+	cd cmd/calcsvc && \
 	go build
+
+.PHONY: build-cli
+build-cli:
+	cd cmd/calccli && \
+	go build
+
+.PHONY: build-all
+build-all: build build-cli
+
+.PHONY: run
+run: build
+	./cmd/calcsvc/calcsvc
+
+
 
 .PHONY: clean
 clean:
-	rm -fr app swagger schema
+	rm -fr gen
 

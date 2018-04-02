@@ -1,26 +1,43 @@
 package design
 
-import (
-	. "github.com/goadesign/goa/design"
-	. "github.com/goadesign/goa/design/apidsl"
-)
+import . "goa.design/goa/http/design"
+import . "goa.design/goa/http/dsl"
 
-var _ = API("adder", func() {
-	Title("The adder API")
-	Description("A teaser for goa")
-	Host("localhost:8080")
-	Scheme("http")
+// API describes the global properties of the API server.
+var _ = API("calc", func() {
+	Title("Calculator Service")
+	Description("HTTP service for adding numbers, a goa teaser")
 })
 
-var _ = Resource("operands", func() {
-	Action("add", func() {
-		Routing(GET("add/:left/:right"))
-		Description("add returns the sum of the left and right parameters in the response body")
-		Params(func() {
-			Param("left", Integer, "Left operand")
-			Param("right", Integer, "Right operand")
+// Service describes a service
+var _ = Service("calc", func() {
+	Description("The calc service performs operations on numbers")
+	// Method describes a service method (endpoint)
+	Method("add", func() {
+		// Payload describes the method payload
+		// Here the payload is an object that consists of two fields
+		Payload(func() {
+			// Attribute describes an object field
+			Attribute("a", Int, "Left operand")
+			Attribute("b", Int, "Right operand")
+			// Both attributes must be provided when invoking "add"
+			Required("a", "b")
 		})
-		Response(OK, "text/plain")
+		// Result describes the method result
+		// Here the result is a simple integer value
+		Result(Int)
+		// HTTP describes the HTTP transport mapping
+		HTTP(func() {
+			// Requests to the service consist of HTTP GET requests
+			// The payload fields are encoded as path parameters
+			GET("/add/{a}/{b}")
+			// Responses use a "200 OK" HTTP status
+			// The result is encoded in the response body
+			Response(StatusOK)
+		})
 	})
+})
 
+var _ = Service("openapi", func() {
+	Files("/swagger.json", "../../gen/http/openapi.json")
 })

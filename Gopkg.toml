@@ -24,13 +24,11 @@
 #   go-tests = true
 #   unused-packages = true
 
-[[override]]
-  name = "github.com/satori/go.uuid"
-  version = "=1.1.0"
+required = ["goa.design/goa/codegen/generator"]
 
 [[constraint]]
   name = "github.com/goadesign/goa"
-  version = "=1.3.1"
+  branch = "v2"
 
 [prune]
   non-go = true
